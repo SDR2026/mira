@@ -1,0 +1,454 @@
+[
+  {
+    "id": "T1",
+    "input": "Generate a project plan for the AI Adoption Project at ABCDE Ltd. Use the provided project description.",
+    "route": "plan",
+    "intent": "plan",
+    "output": "# Project plan\n\n**Source:** AI Adoption Project Description for ABCDE Ltd. and project timeline file\n\n## Summary\nABCDE Ltd. is embarking on an AI adoption initiative to enhance operational efficiency, improve customer experience, and drive data-driven decision-making across the organization.\n\n## Objectives\n- reduce delivery delays by 15% _(source: \"Key goals include reducing delivery delays by 15%\")_\n- lowering operational costs by 10% _(source: \"Key goals include lowering operational costs by 10%\")_\n- improving service responsiveness _(source: \"Key goals include improving service responsiveness\")_\n\n## Scope areas\n- demand forecasting\n- route optimization\n- inventory management\n- customer support\n\n## Approach\nThe project will focus on integrating AI-powered tools into core business functions. It will be implemented in phases, beginning with a detailed assessment of current workflows and data infrastructure, followed by pilot implementations in targeted departments.\n\n## Phases, milestones and timeline\n| Phase | Name | Weeks | Key activities | Milestones and deliverables |\n|---|---|---|---|---|\n| 1 | Project Initiation | 1 to 2 | Define project scope; Form cross-functional team; Initial stakeholder meeting | Project charter signed off; Team structure finalized |\n| 2 | Current State Analysis | 3 to 4 | Assess existing processes & systems; Identify data sources & gaps | Current systems audit report; Gap analysis report |\n| 3 | Use Case Selection | 5 to 6 | Shortlist priority AI use cases (forecasting, route optimization) | Final list of prioritized use cases with success criteria |\n| 4 | Pilot Design | 7 to 10 | Data collection & preparation; Model design and development | Working prototype models; Data pipelines established |\n| 5 | Pilot Implementation | 11 to 14 | Deploy AI models in test environments; Monitor performance | Pilot results report; User feedback and performance metrics |\n| 6 | Evaluation & Iteration | 15 to 16 | Evaluate pilot outcomes; Adjust models as needed | Updated models and process refinements |\n| 7 | Full Deployment | 17 to 22 | Scale AI models across selected departments; Train staff | Full production rollout; Training sessions completed |\n| 8 | Monitoring & Review | 23 to 24 | Continuous performance monitoring; Final project review | Project closure report; Recommendations for future scaling |\n\n## Timeline estimate\nTotal duration: 24 weeks (week 1 to week 24), in 8 phases, as stated in the timeline file. The file gives weeks only; no calendar dates are stated.\n\n## Governance\nA cross-functional task force comprising data scientists, IT professionals, and business stakeholders will oversee the deployment.\n\n\n\n---\n_Mira run 55391c8a | Agent route: plan | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 2 | Tokens: 1715 in, 879 out | Est. cost: $0.00078_",
+    "found": [
+      "phases (all 8 phase names)",
+      "milestones (all timeline milestones)",
+      "timeline (24 weeks)",
+      "grounded goals (15% and 10%)",
+      "NOT invented figures",
+      "NOT invented phase"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Planner",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "phases_in_source": 8,
+        "phases_from_model": 8,
+        "phases_matching_source": 8,
+        "phase_groundedness": 1,
+        "objectives_kept": 3,
+        "objectives_returned": 3
+      }
+    },
+    "usage": {
+      "input": 1715,
+      "output": 879,
+      "cost": 0.00078465,
+      "calls": 2
+    },
+    "latency_ms": 10877,
+    "trace_id": "55391c8a5f480165d5b5026ca1ef6d3c",
+    "agents": [
+      "Orchestrator",
+      "Planner"
+    ]
+  },
+  {
+    "id": "T2",
+    "input": "Generate a project plan for: \"We want to build a chatbot.\" (vague input)",
+    "route": "insufficient",
+    "intent": "plan",
+    "output": "# Project plan: more information needed\n\n**Insufficient information.** The request does not describe a project in enough detail. A plan written from this would be invented. Nothing was generated.\n\n**Please provide:**\n- Project scope (what is being built and for whom)\n- Goals and success measures\n- Deliverables\n- Timeline or deadline\n- Team size and roles\n\nIf you mean the ABCDE Ltd. AI Adoption Project, say so and I will use the provided project files.\n\n---\n_Mira run 0fa5e5e2 | Agent route: insufficient | Data: none | Grounding check: PASS | LLM calls: 1 | Tokens: 549 in, 24 out | Est. cost: $0.00010_",
+    "found": [
+      "flagged as insufficient",
+      "asks for scope",
+      "asks for timeline",
+      "asks for team size",
+      "NOT full plan generated"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Router and sufficiency gate",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "insufficient": true
+      }
+    },
+    "usage": {
+      "input": 549,
+      "output": 24,
+      "cost": 0.00009675,
+      "calls": 1
+    },
+    "latency_ms": 946,
+    "trace_id": "0fa5e5e254a7737cdc19c9a00e527973",
+    "agents": [
+      "Orchestrator"
+    ]
+  },
+  {
+    "id": "T3",
+    "input": "Generate a risk assessment for the AI Adoption Project at ABCDE Ltd. Use the provided project description.",
+    "route": "risk",
+    "intent": "risk_assessment",
+    "output": "# Risk assessment\n\n**Source:** AI Adoption Project Description for ABCDE Ltd. and risk register (10 risks)\n\n## Risk matrix (from the risk register)\n| ID | Category | Risk | Potential impact | Mitigation | Relevance to this project | Board evidence |\n|---|---|---|---|---|---|---|\n| R01 | Data Quality & Availability | Incomplete or unstructured data | Poor model performance and inaccurate outcomes | Perform early data audits and implement robust data governance | The project description mentions the importance of data quality for enhancing operational efficiency and decision-making. | T006 |\n| R02 | Integration Issues | Difficulty integrating AI with legacy systems | Delays in deployment and operational disruptions | Plan integration roadmap and use APIs/middleware | Integrating AI with existing logistics systems is a key focus of the project, which may lead to integration challenges. | None |\n| R03 | Talent & Skills Gap | Lack of internal AI/ML expertise | Overreliance on external vendors and slow progress | Provide staff training and hire specialized talent | The project involves AI adoption, which requires specialized skills that may not be present internally. | T020 |\n| R04 | Change Resistance | Employees resist adopting AI-driven workflows | Low adoption and reduced ROI | Strong change management and early engagement | The project aims to change workflows significantly, which could lead to resistance from employees. | None |\n| R05 | Ethical & Legal Concerns | Risks of biased models or data privacy violations | Legal repercussions and reputational damage | Involve legal early and implement fairness checks | The project involves handling data, raising concerns about data privacy and model bias. | T025 |\n| R06 | Cost Overruns | Underestimation of AI development costs | Budget constraints and project delays | Set realistic budget and build in contingency funds | The project may face budget constraints if AI development costs are underestimated. | None |\n| R07 | Unrealistic Expectations | Stakeholders expect immediate ROI | Disillusionment and loss of support | Align expectations and show quick wins | Stakeholders may expect immediate results from the AI adoption, which could lead to disillusionment. | None |\n| R08 | Model Performance Drift | AI models lose accuracy over time | Incorrect decisions and trust erosion | Regular retraining cycles and monitoring dashboards | The project involves deploying AI models, which may lose accuracy over time if not monitored. | None |\n| R09 | Security Vulnerabilities | AI models targeted by adversarial attacks | Data breaches and operational risks | Adopt AI security best practices and penetration testing | Security vulnerabilities are a concern as the project involves AI models that could be targeted. | T024 |\n| R10 | Vendor Lock-in | Overdependence on a specific AI platform | Flexibility loss and future switching costs | Favor open standards and negotiate flexible vendor terms | The project may lead to vendor lock-in if a specific AI platform is heavily relied upon. | None |\n\n## Note\nThe assessment highlights various risks associated with data quality, integration, and employee adoption, which are critical for the success of the AI adoption project.\n\nThe register has no likelihood or severity scores, so no scores are given.\n\n---\n_Mira run 95690e39 | Agent route: risk | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 2 | Tokens: 2856 in, 541 out | Est. cost: $0.00075_",
+    "found": [
+      "categorized risks (all 10 register ids)",
+      "categories present",
+      "relevant to logistics / AI (mentions AI or data in relevance)",
+      "NOT unknown risk ids",
+      "NOT generic unrelated risks (e.g. weather, pandemic)"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Risk Assessor",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "register_risks": 10,
+        "risks_assessed": 10
+      }
+    },
+    "usage": {
+      "input": 2856,
+      "output": 541,
+      "cost": 0.000753,
+      "calls": 2
+    },
+    "latency_ms": 5993,
+    "trace_id": "95690e3945609de6bd7951e1ed2b31a9",
+    "agents": [
+      "Orchestrator",
+      "Risk Assessor"
+    ]
+  },
+  {
+    "id": "T4",
+    "input": "Generate a risk assessment for: \"New project starting soon.\" (vague input)",
+    "route": "insufficient",
+    "intent": "risk_assessment",
+    "output": "# Risk assessment: more information needed\n\n**Insufficient information.** The request does not describe a project, so any risks listed would be invented. Nothing was generated.\n\n**Please provide:**\n- Project description (what is being built, for whom, in which domain)\n- Scope and goals\n- Timeline\n- Team and stakeholders\n- Technology, data and constraints\n\nIf you mean the ABCDE Ltd. AI Adoption Project, say so and I will use the provided project files.\n\n---\n_Mira run 06083018 | Agent route: insufficient | Data: none | Grounding check: PASS | LLM calls: 1 | Tokens: 547 in, 28 out | Est. cost: $0.00010_",
+    "found": [
+      "flagged as insufficient",
+      "asks for project details",
+      "NOT invented risks (no risk ids, no risk table)"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Router and sufficiency gate",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "insufficient": true
+      }
+    },
+    "usage": {
+      "input": 547,
+      "output": 28,
+      "cost": 0.00009884999999999999,
+      "calls": 1
+    },
+    "latency_ms": 904,
+    "trace_id": "06083018da15a2115defca098e07c5c0",
+    "agents": [
+      "Orchestrator"
+    ]
+  },
+  {
+    "id": "T5",
+    "input": "Generate a weekly status report using the sample task board data for Sprint 3.",
+    "route": "status",
+    "intent": "status_report",
+    "output": "# Weekly status report: Sprint 3\n\n**As of:** Friday 24 April 2026  \n**Scope:** Sprint 3 (4 tasks). Board-wide counts and blockers are shown for context.  \n**Source:** task board CSV (25 tasks)\n\n## Overall health: AMBER\n- 1 blocked task(s): T024\n- 1 overdue open task(s): T006\n- 2 In Progress task(s) due within 7 days: T007, T025\n\n_Rule used: GREEN: no blocked, overdue or soon-due open tasks. AMBER: at least one blocked task, one overdue open task, or an In Progress task due within 7 days. RED: 2 or more overdue open tasks, or a blocked task due within 14 days._\n\n## Summary\nThe current health level is AMBER due to one overdue task and two tasks in progress that are due soon. There are no blocked tasks in the sprint scope, but one task is blocked on the board. Immediate attention is needed for the overdue task.\n\n## Task counts\n| Status | Sprint 3 | Whole board |\n|---|---|---|\n| Done | 0 | 5 |\n| In Progress | 2 | 3 |\n| To Do | 2 | 16 |\n| Blocked | 0 | 1 |\n| Total | 4 | 25 |\n\n## Completed in Sprint 3\n_No tasks completed in Sprint 3._\n\n**Completed in other sprints (5):** T001 Define project scope and objectives (Sprint 1); T002 Form cross-functional task force (Sprint 1); T003 Initial stakeholder alignment meeting (Sprint 1); T004 Audit existing data infrastructure (Sprint 2); T005 Map current logistics workflows (Sprint 2)\n\n## In progress\n| ID | Task | Status | Owner | Sprint | Due |\n|---|---|---|---|---|---|\n| T007 | Shortlist AI use cases | In Progress | Arjun Mehta | Sprint 3 | 28 April 2026 |\n| T025 | Legal review of data usage | In Progress | Sarah Lin | Sprint 3 | 28 April 2026 |\n\n## Blocked (whole board)\n| ID | Task | Status | Owner | Sprint | Due | Reason |\n|---|---|---|---|---|---|---|\n| T024 | Security review of AI infrastructure | Blocked | James Wong | Sprint 5 | 26 May 2026 | waiting for security team availability |\n\n## To do in Sprint 3\n| ID | Task | Status | Owner | Sprint | Due |\n|---|---|---|---|---|---|\n| T008 | Define success criteria for each use case | To Do | Sarah Lin | Sprint 3 | 2 May 2026 |\n| T009 | Vendor evaluation for ML platform | To Do | James Wong | Sprint 3 | 5 May 2026 |\n\n## Overdue or at risk (whole board)\n| ID | Task | Flag | Why |\n|---|---|---|---|\n| T024 | Security review of AI infrastructure | Blocked | Blocked: waiting for security team availability (due 26 May 2026, 32 days from the as-of date) |\n| T006 | Identify data gaps and quality issues | Overdue | Overdue by 3 days: due 21 April 2026 and status is In Progress |\n| T007 | Shortlist AI use cases | Due soon | Due in 4 days (28 April 2026) and status is In Progress |\n| T025 | Legal review of data usage | Due soon | Due in 4 days (28 April 2026) and status is In Progress |\n\n## Upcoming milestones (next 14 days)\n| Due | Phase | Milestone or deliverable |\n|---|---|---|\n| 24 April 2026 | 2. Current State Analysis | Current systems audit report |\n| 24 April 2026 | 2. Current State Analysis | Gap analysis report |\n| 8 May 2026 | 3. Use Case Selection | Final list of prioritized use cases with success criteria |\n\n_Dates assume project week 1 starts Monday 30 March 2026; each milestone falls on the Friday of its phase end week._\n\n## Attention and next actions\n- **T006:** This task is overdue by 3 days and needs to be addressed.\n- **T007:** This task is due in 4 days and should be prioritized.\n- **T025:** This task is also due in 4 days and requires attention.\n- Next: **T006:** Complete the overdue task as soon as possible.\n\n---\n_Mira run cabc8a30 | Agent route: status | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 2 | Tokens: 1336 in, 225 out | Est. cost: $0.00034_",
+    "found": [
+      "tasks by status sections",
+      "actual Sprint 3 task names (all 4)",
+      "blocked T024 shown with its name",
+      "overall health",
+      "NOT unknown task ids",
+      "NOT progress percentages"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Status Reporter",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "status_counts_computed": {
+          "Done": 5,
+          "In Progress": 3,
+          "To Do": 16,
+          "Blocked": 1,
+          "Total": 25
+        }
+      }
+    },
+    "usage": {
+      "input": 1336,
+      "output": 225,
+      "cost": 0.0003354,
+      "calls": 2
+    },
+    "latency_ms": 3088,
+    "trace_id": "cabc8a302031b2fc36f60c5a7d3e65cf",
+    "agents": [
+      "Orchestrator",
+      "Status Reporter"
+    ]
+  },
+  {
+    "id": "T6",
+    "input": "Generate a weekly status report for: \"Things are going fine.\" (no task data)",
+    "route": "insufficient",
+    "intent": "status_report",
+    "output": "# Weekly status report: more information needed\n\n**Insufficient information.** No task data is available. Without a task board I cannot state which tasks are done, in progress, blocked or at risk, or any progress figure. Nothing was generated.\n\n**Please provide:**\n- A task board export (CSV with task_id, task_name, status, assignee, priority, sprint, due_date)\n- The sprint or week to report on\n\nIf you mean the ABCDE Ltd. AI Adoption Project, say so and I will use the provided project files.\n\n---\n_Mira run f82e33c2 | Agent route: insufficient | Data: none | Grounding check: PASS | LLM calls: 1 | Tokens: 548 in, 29 out | Est. cost: $0.00010_",
+    "found": [
+      "states no task data available",
+      "NOT fabricated task ids",
+      "NOT fabricated percentages",
+      "NOT status counts"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Router and sufficiency gate",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "insufficient": true
+      }
+    },
+    "usage": {
+      "input": 548,
+      "output": 29,
+      "cost": 0.0000996,
+      "calls": 1
+    },
+    "latency_ms": 879,
+    "trace_id": "f82e33c207e7f4b1597a33f0d94b9a27",
+    "agents": [
+      "Orchestrator"
+    ]
+  },
+  {
+    "id": "T7",
+    "input": "What are the top 3 risks for the ABCDE Ltd project based on the risk data?",
+    "route": "risk",
+    "intent": "top_risks",
+    "output": "# Top 3 risks\n\n**Source:** risk register and task board\n\n| Rank | ID | Category | Risk | Potential impact | Mitigation | Why it ranks here | Board evidence |\n|---|---|---|---|---|---|---|---|\n| 1 | R09 | Security Vulnerabilities | AI models targeted by adversarial attacks | Data breaches and operational risks | Adopt AI security best practices and penetration testing | The project description does not address security, but the risk of AI models being targeted by adversarial attacks is relevant. | T024 |\n| 2 | R01 | Data Quality & Availability | Incomplete or unstructured data | Poor model performance and inaccurate outcomes | Perform early data audits and implement robust data governance | The project description mentions the importance of data quality for AI model performance, linking it to the risk of incomplete or unstructured data. | T004, T006 |\n| 3 | R05 | Ethical & Legal Concerns | Risks of biased models or data privacy violations | Legal repercussions and reputational damage | Involve legal early and implement fairness checks | The project description does not explicitly mention ethical concerns, but the use of AI raises potential risks of biased models or data privacy violations. | T025 |\n\n**Ranking basis:** Risks with a task on the board that concerns them rank first (Blocked, then In Progress, then To Do). Ties follow the order of the risk register. The register has no likelihood or severity scores.\n\n---\n_Mira run 7d00d1ee | Agent route: risk | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 2 | Tokens: 2850 in, 593 out | Est. cost: $0.00078_",
+    "found": [
+      "exactly 3 distinct register risks",
+      "risks come from the CSV (names match)",
+      "NOT invented risk ids"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Risk Assessor",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "top_returned_valid": 3
+      }
+    },
+    "usage": {
+      "input": 2850,
+      "output": 593,
+      "cost": 0.0007833,
+      "calls": 2
+    },
+    "latency_ms": 7688,
+    "trace_id": "7d00d1eeadf782a70b7deb6e2daf25dd",
+    "agents": [
+      "Orchestrator",
+      "Risk Assessor"
+    ]
+  },
+  {
+    "id": "T8",
+    "input": "Which tasks are blocked or at risk of missing their deadline based on the task board?",
+    "route": "at_risk",
+    "intent": "at_risk_tasks",
+    "output": "# Blocked and at-risk tasks\n\n**As of:** Friday 24 April 2026  \n**Source:** task board CSV  \n**Rule:** at risk = open task already past its due date, or due within 7 days and not Done. Blocked tasks are always listed.\n\n| ID | Task | Status | Owner | Sprint | Due | Flag | Why | Suggested action |\n|---|---|---|---|---|---|---|---|---|\n| T024 | Security review of AI infrastructure | Blocked | James Wong | Sprint 5 | 26 May 2026 | Blocked | Blocked: waiting for security team availability (due 26 May 2026, 32 days from the as-of date) | Escalate to secure a slot with the security team for the review. |\n| T006 | Identify data gaps and quality issues | In Progress | Priya Nair | Sprint 2 | 21 April 2026 | Overdue | Overdue by 3 days: due 21 April 2026 and status is In Progress | Prioritize completing the gap analysis report to address the overdue status. |\n| T007 | Shortlist AI use cases | In Progress | Arjun Mehta | Sprint 3 | 28 April 2026 | Due soon | Due in 4 days (28 April 2026) and status is In Progress | Continue progressing on the shortlist of AI use cases to meet the upcoming deadline. |\n| T025 | Legal review of data usage | In Progress | Sarah Lin | Sprint 3 | 28 April 2026 | Due soon | Due in 4 days (28 April 2026) and status is In Progress | Ensure the legal review of data usage is completed before the due date. |\n\n## Milestones due in the next 14 days, with open tasks due by then\n| Due | Milestone or deliverable | Open tasks due on or before this date |\n|---|---|---|\n| 24 April 2026 | Current systems audit report | T006 (In Progress) |\n| 24 April 2026 | Gap analysis report | T006 (In Progress) |\n| 8 May 2026 | Final list of prioritized use cases with success criteria | T006 (In Progress), T007 (In Progress), T008 (To Do), T009 (To Do), T025 (In Progress) |\n\n---\n_Mira run 9bfc0adf | Agent route: at_risk | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 2 | Tokens: 1134 in, 137 out | Est. cost: $0.00025_",
+    "found": [
+      "identifies T024 as Blocked",
+      "checks due dates (overdue T006)",
+      "NOT unknown task ids"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Milestone Tracker",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "flagged": 4
+      }
+    },
+    "usage": {
+      "input": 1134,
+      "output": 137,
+      "cost": 0.00025229999999999995,
+      "calls": 2
+    },
+    "latency_ms": 2699,
+    "trace_id": "9bfc0adf540dab64c9108aa5be1e97bb",
+    "agents": [
+      "Orchestrator",
+      "Milestone Tracker"
+    ]
+  },
+  {
+    "id": "T9",
+    "input": "Generate a project plan for a 2-week project with no details provided.",
+    "route": "insufficient",
+    "intent": "plan",
+    "output": "# Project plan: more information needed\n\n**Insufficient information.** The request does not describe a project in enough detail. A plan written from this would be invented. Nothing was generated.\n\n**Please provide:**\n- Project scope (what is being built and for whom)\n- Goals and success measures\n- Deliverables\n- Timeline or deadline\n- Team size and roles\n\nIf you mean the ABCDE Ltd. AI Adoption Project, say so and I will use the provided project files.\n\n---\n_Mira run c52d5f8a | Agent route: insufficient | Data: none | Grounding check: PASS | LLM calls: 1 | Tokens: 545 in, 28 out | Est. cost: $0.00010_",
+    "found": [
+      "asks for scope",
+      "asks for goals",
+      "asks for deliverables",
+      "NOT detailed plan generated"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Router and sufficiency gate",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "insufficient": true
+      }
+    },
+    "usage": {
+      "input": 545,
+      "output": 28,
+      "cost": 0.00009855,
+      "calls": 1
+    },
+    "latency_ms": 946,
+    "trace_id": "c52d5f8ae3718058759a9fe980296099",
+    "agents": [
+      "Orchestrator"
+    ]
+  },
+  {
+    "id": "T10",
+    "input": "Summarize the current project status: how many tasks are done, in progress, and to do?",
+    "route": "counts",
+    "intent": "status_counts",
+    "output": "# Task status summary\n\n**As of:** Friday 24 April 2026  \n**Source:** task board CSV (25 tasks)\n\nDone: **5**, In progress: **3**, To do: **16**, Blocked: **1** (total 25).\n\n| Status | Count | Task IDs |\n|---|---|---|\n| Done | 5 | T001, T002, T003, T004, T005 |\n| In Progress | 3 | T006, T007, T025 |\n| To Do | 16 | T008, T009, T010, T011, T012, T013, T014, T015, T016, T017, T018, T019, T020, T021, T022, T023 |\n| Blocked | 1 | T024 |\n| Total | 25 |  |\n\n---\n_Mira run 662bcdfb | Agent route: counts | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 1 | Tokens: 551 in, 27 out | Est. cost: $0.00010_",
+    "found": [
+      "Done count matches CSV (5)",
+      "In progress count matches (3)",
+      "To do count matches (16)",
+      "Blocked count matches (1)",
+      "total 25"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Status Reporter (counts, computed by code)",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "status_counts_computed": {
+          "Done": 5,
+          "In Progress": 3,
+          "To Do": 16,
+          "Blocked": 1,
+          "Total": 25
+        }
+      }
+    },
+    "usage": {
+      "input": 551,
+      "output": 27,
+      "cost": 0.00009884999999999999,
+      "calls": 1
+    },
+    "latency_ms": 764,
+    "trace_id": "662bcdfb35ca412e92be565b11bf348b",
+    "agents": [
+      "Orchestrator"
+    ]
+  },
+  {
+    "id": "T11",
+    "input": "What milestones are coming up in the next 2 weeks based on the timeline?",
+    "route": "milestones",
+    "intent": "upcoming_milestones",
+    "output": "# Upcoming milestones: next 14 days\n\n**As of:** Friday 24 April 2026 (window ends 8 May 2026)  \n**Source:** project timeline file and task board\n\n| Due | Phase | Milestone or deliverable | Open board tasks due on or before this date |\n|---|---|---|---|\n| 24 April 2026 (as-of date) | 2. Current State Analysis, end of week 4 | Current systems audit report | T006 (In Progress) |\n| 24 April 2026 (as-of date) | 2. Current State Analysis, end of week 4 | Gap analysis report | T006 (In Progress) |\n| 8 May 2026 | 3. Use Case Selection, end of week 6 | Final list of prioritized use cases with success criteria | T006 (In Progress), T007 (In Progress), T008 (To Do), T009 (To Do), T025 (In Progress) |\n\n**How dates were set:** the timeline file gives weeks, not dates. Week 1 is taken to start on Monday 30 March 2026 (inferred from the board's first due dates; override with project_start). Each milestone falls on the Friday of its phase end week. The files hold no milestone completion status, so none is reported.\n\n---\n_Mira run 88c8a423 | Agent route: milestones | Data: ABCDE sample files | Grounding check: PASS | LLM calls: 1 | Tokens: 546 in, 31 out | Est. cost: $0.00010_",
+    "found": [
+      "lists milestones from project_timeline.csv",
+      "includes the use-case milestone due 8 May 2026",
+      "NOT milestones outside the timeline file",
+      "states how dates were set (week 1 anchor)"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "PASS",
+    "grounding": {
+      "agent": "Milestone Tracker (computed by code)",
+      "warnings": [],
+      "dropped": [],
+      "metrics": {
+        "milestones_in_source": 14,
+        "milestones_listed": 3
+      }
+    },
+    "usage": {
+      "input": 546,
+      "output": 31,
+      "cost": 0.00010049999999999999,
+      "calls": 1
+    },
+    "latency_ms": 1017,
+    "trace_id": "88c8a423e0e59e3c6030fb7635243d65",
+    "agents": [
+      "Orchestrator"
+    ]
+  },
+  {
+    "id": "T12",
+    "input": "Generate a stakeholder update email summarizing Sprint 2 progress.",
+    "route": "update",
+    "intent": "stakeholder_update",
+    "output": "# Stakeholder update email (Sprint 2, leadership audience)\n\n**Subject:** Sprint 2 Update\n\nDear Team,\n\nSprint 2 status as of 24 April 2026: 2 of 3 tasks are done. Open: T006 (In Progress, overdue by 3 days, due 21 April 2026).\n\nThe remaining task, 'Identify data gaps and quality issues' (T006), is currently in progress and is overdue by 3 days. We will continue to monitor its status closely.\n\n**Sprint 2 at a glance (as of 24 April 2026)**\n\n| ID | Task | Status | Owner | Due |\n|---|---|---|---|---|\n| T004 | Audit existing data infrastructure | Done | Priya Nair | 18 April 2026 |\n| T005 | Map current logistics workflows | Done | James Wong | 18 April 2026 |\n| T006 | Identify data gaps and quality issues | In Progress | Priya Nair | 21 April 2026 |\n\nPlease let me know if you would like more detail.\n\nRegards,  \n[Your name]\n\n---\n_Mira run 04630f19 | Agent route: update | Data: ABCDE sample files | Grounding check: REVIEW | LLM calls: 2 | Tokens: 1155 in, 157 out | Est. cost: $0.00027_\n\n_Removed by guardrails: Paragraph claimed the sprint is complete while tasks are still open_",
+    "found": [
+      "references Sprint 2 tasks (all 3)",
+      "has subject and greeting",
+      "NOT Sprint 3+ task ids",
+      "NOT Sprint 3+ task names",
+      "NOT mention of Sprint 3 or later"
+    ],
+    "failed": [],
+    "pass": true,
+    "grounding_status": "REVIEW",
+    "grounding": {
+      "agent": "Update Writer",
+      "warnings": [],
+      "dropped": [
+        "Paragraph claimed the sprint is complete while tasks are still open"
+      ],
+      "metrics": {
+        "sprint_tasks": 3
+      }
+    },
+    "usage": {
+      "input": 1155,
+      "output": 157,
+      "cost": 0.00026745,
+      "calls": 2
+    },
+    "latency_ms": 2418,
+    "trace_id": "04630f193996ee832ff0936a3e78483b",
+    "agents": [
+      "Orchestrator",
+      "Update Writer"
+    ]
+  }
+]

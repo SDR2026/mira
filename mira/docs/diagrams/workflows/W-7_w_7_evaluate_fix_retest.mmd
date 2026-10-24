@@ -1,0 +1,10 @@
+flowchart TD
+  N0["Run baseline test"]
+  N1["Inspect trace and locate failure"]
+  N2["Change prompt or code guardrail"]
+  N3["Rerun the same test and compare"]
+  N4["Pass: record closeout; fail: inspect again"]
+  N0 --> N1
+  N1 --> N2
+  N2 --> N3
+  N3 --> N4

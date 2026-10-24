@@ -1,0 +1,10 @@
+flowchart TD
+  N0["Chat or API request"]
+  N1["Normalize request and files"]
+  N2["Classify intent and check sufficiency"]
+  N3["Route to specialist or ask for details"]
+  N4["Validate, trace, return answer"]
+  N0 --> N1
+  N1 --> N2
+  N2 --> N3
+  N3 --> N4

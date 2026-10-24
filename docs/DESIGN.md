@@ -1,6 +1,6 @@
 # Mira design document
 
-Version 1.0 | 18 October 2026 | Nexora Pvt. Ltd. capstone | Status: built, offline-tested, awaiting live run with OpenAI and Langfuse keys
+Version 1.1 | 24 October 2026 | Nexora Pvt. Ltd. capstone | Status: live baseline complete
 
 ## 1. Purpose and scope
 
@@ -19,7 +19,7 @@ Mira answers 8 kinds of request from a project manager, using only the files pro
 
 Items 6 and 7 are the extended capability EX-1 (Milestone Alert System). Item 8 is EX-2 (Stakeholder Update Generator).
 
-Out of scope: writing back to any external system, live Jira or Slack integration, user accounts, fine-tuning, retrieval over large corpora, human approval steps. These match scope document v0.5.
+Out of scope: writing back to any external system, live Jira or Slack integration, user accounts, fine-tuning, retrieval over large corpora, human approval steps. These match Scope of Work v0.9.
 
 ## 2. Design principles
 
@@ -42,6 +42,8 @@ Layers:
 - **Output:** `Finalize and build trace` adds the footer (route, data source, grounding status, LLM calls, tokens, cost) and builds the trace. `Tracing on?`, `Langfuse trace`, `Respond`.
 
 ## 4. Workflows
+
+Flow diagrams for W-1 to W-7 are available in [`diagrams/workflows/`](diagrams/workflows/) and in the submission evidence supplement. The steps below describe the implemented behavior.
 
 Each workflow is a path through the one n8n workflow.
 
@@ -107,7 +109,7 @@ Langfuse receives an OpenTelemetry trace per request: root span `mira-run` (inte
 
 A request makes 1 or 2 model calls (routing, then one specialist), and 1 call when the answer needs no specialist narrative. Expected token use per request is about 2,000 to 3,000 input and 400 to 800 output; the live figure comes from Langfuse. See `docs/EVALUATION.md`.
 
-## 7. Assumptions and open items
+## 7. Assumptions and resolved live-evaluation status
 
 | # | Assumption or item | Effect |
 |---|---|---|
@@ -116,4 +118,9 @@ A request makes 1 or 2 model calls (routing, then one specialist), and 1 call wh
 | A-3 | The problem statement says 3 Done tasks; the board has 5 (T001 to T005) | Mira reports the board. The difference is stated in the evaluation notes. |
 | A-4 | Board due dates run to 4 August 2026 (about 17 weeks); the timeline is 24 weeks | Reported as-is, not corrected. |
 | A-5 | Langfuse traces use the OTLP endpoint, not the Langfuse SDK | n8n has no native Langfuse node. |
-| O-1 | Live runs with OpenAI and Langfuse are done on the user's machine | The build environment cannot reach either service. |
+| Closed | Live run | OpenAI and Langfuse baseline run completed 18 October 2026; see `tests/out/results_real.md`, `docs/EVALUATION.md` and the trace export. |
+
+
+## 8. Evaluate-fix-retest evidence
+
+The live correction record for T1, T7 and T12 is in [`submission/Mira_Design_and_Evaluation_Evidence_v1.0.docx`](../submission/Mira_Design_and_Evaluation_Evidence_v1.0.docx). Each row identifies the test trace, failure, code or prompt correction and final rerun result. T12 passes while its trace is marked REVIEW because a guardrail removed unsupported content.

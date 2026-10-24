@@ -1,6 +1,6 @@
 # Mira evaluation, cost and production metrics
 
-Version 1.0 | 18 October 2026
+Version 1.1 | 24 October 2026
 
 ## 1. What has been tested, and with what
 
@@ -10,8 +10,8 @@ Version 1.0 | 18 October 2026
 | Guardrails against model errors | Yes | Stand-in server in modes `hallucinate`, `garbage`, `error` | Invented ids, phases, figures and sprint mentions removed; counts and tables still correct when the model fails |
 | Chat trigger, webhook, CSV file upload | Yes | Same instance | Pass |
 | Production workflow import | Yes | `n8n import:workflow` on a clean instance | Imports; credentials are placeholders |
-| Real OpenAI output quality | **No** | Needs your key | Section 3 below |
-| Real Langfuse traces and screenshots | **No** | Needs your keys | Section 3 below |
+| Real OpenAI output quality | Yes | Live run on gpt-4o-mini through n8n Cloud, 18 October 2026 | 12 of 12 baseline tests pass; T12 trace is REVIEW after the guardrail removed an unsupported completion claim. |
+| Real Langfuse traces and screenshots | Yes | Export and screenshots included in `docs/observability/` and `screenshots/` | 78 requests, 119 model generations and 431 observations; 9 of 78 requests have a REVIEW guardrail intervention. |
 
 The stand-in server is not a language model. Its token counts are estimates (characters divided by 4). Real quality and real cost are only known after the live run.
 
@@ -53,48 +53,10 @@ Stand-in run (plumbing only): 12 of 12 pass. **Live run on gpt-4o-mini via n8n C
 | T11 | Pass | No | 1 | 546 / 31 | 0.00010 | 1.0 | Dates from code |
 | T12 | Pass | No | 2 | 1,155 / 157 | 0.00027 | 2.4 | Guardrail removed a false "sprint complete" claim (REVIEW) |
 
-## 3. What you need to do for the live results
+## 3. Live evaluation closeout
 
-1. Follow the README setup.
-2. Run `node tools/check_keys.js` and confirm both services answer OK.
-3. Run the 12 tests: `node tests/run_baseline.js --label real`. Send me `tests/out/results_real.md`. I will tune prompts from any failures.
-4. Open Langfuse, Traces. Take screenshots of: the trace list; one plan trace expanded (spans, tokens, cost); one status trace; one insufficient-input trace (single call).
-5. Rerun after prompt changes and keep both result files as before and after evidence.
+The live baseline was run with gpt-4o-mini through n8n Cloud on 18 October 2026. All 12 baseline tests passed. Full outputs, expected-element checks, hallucination flags and pass/fail status are in `tests/out/results_real.md` and `tests/out/results_real.json`.
 
-## 4. Cost analysis
+The Langfuse export contains 78 unique requests, 119 model generations and 431 observations. Nine requests are marked REVIEW because a guardrail removed unsupported content or the risk ranker used a fallback. REVIEW records an intervention for human inspection; it does not change the baseline harness result. T12 is a concrete example: the guardrail removed a false claim that Sprint 2 was complete while T006 remained open, and the final output passed the test.
 
-Prices (gpt-4o-mini, set in `Config`): USD 0.15 per 1M input tokens, USD 0.60 per 1M output tokens. Confirm against the OpenAI pricing page on the day you submit.
-
-Measured on the live run (18 October 2026). Total for the 12 tests: 14,332 input and 2,699 output tokens, USD 0.0038. Average USD 0.0003 per request and 3.2 seconds.
-
-| Request | Model calls | Input tokens | Output tokens | Cost USD |
-|---|---|---|---|---|
-| Plan (T1) | 2 | about 1,900 | about 700 | about 0.0007 |
-| Risk assessment (T3) | 2 | about 3,000 | about 900 | about 0.0010 |
-| Top 3 risks (T7) | 2 | about 3,000 | about 300 | about 0.0006 |
-| Status report (T5) | 2 | about 1,300 | about 300 | about 0.0004 |
-| Blocked tasks (T8) | 2 | about 1,150 | about 200 | about 0.0003 |
-| Stakeholder update (T12) | 2 | about 1,050 | about 250 | about 0.0003 |
-| Counts, milestones, vague input | 1 | about 560 | about 25 | about 0.0001 |
-
-Average across the 12 tests: USD 0.0003 per request. At 20 requests per user per day, that is about USD 0.006 per user per day, or about USD 0.12 per user per month (20 working days). 100 users: about USD 12 per month.
-
-Cost controls built in: code answers need no specialist call; vague input is stopped before any specialist call; temperature 0 and a 1,800 token output cap; Langfuse shows cost per trace.
-
-## 5. Production metrics
-
-| Metric | Definition | Target | Source |
-|---|---|---|---|
-| Plan groundedness | Share of plan objectives, phases and milestones that trace to the description or timeline file | 100% (enforced by validator) | Trace metadata `grounding_status`, answer footer |
-| Risk relevance | Share of register risks with a relevance note a reviewer rates as specific to the project | 90% or more | Reviewer sample of 10 outputs per week |
-| Status accuracy | Counts, task lists and health rating equal the board | 100% (computed by code) | Weekly spot check against the CSV |
-| Guardrail intervention rate | Share of requests with status REVIEW (something removed) | Below 15%; every case reviewed | Langfuse filter on `grounding_status` |
-| Cost and latency | Cost and seconds per request | Below USD 0.002 and below 15 s | Langfuse trace cost and latency |
-| Refusal accuracy | Vague input returns a request for details, not an answer | 100% on T2, T4, T6, T9 | Baseline run |
-
-## 6. Known limits
-
-- The model call can fail or return invalid JSON; the answer then shows only the code-computed parts and says so in the footer.
-- Figure checks look at percentages and numbers of 25 or more. A wrong small number in model prose would pass; counts and dates are shown from code tables.
-- Dates depend on assumptions A-1 and A-2 in the design document.
-- The problem statement's "3 Done tasks" differs from the board's 5. Mira reports the board.
+The trace-linked correction record for T1, T7 and T12 is in `submission/Mira_Design_and_Evaluation_Evidence_v1.0.docx`. Before any prompt or model change, rerun T1 to T12 and compare the outputs with the expected criteria.

@@ -13,7 +13,7 @@ Mira is a multi-agent assistant built in n8n for Nexora Pvt. Ltd. It creates pro
 | `tools/check_keys.js` | One-minute check of your OpenAI and Langfuse keys |
 | `data/` | The 5 provided sample files |
 | `tests/` | Baseline runner (T1 to T12), guardrail tests, stand-in model server |
-| `docs/` | Design document, architecture diagram, evaluation and cost notes |
+| `docs/` | Current design and evaluation notes, architecture diagram, W-1 to W-7 flow diagrams, trace export |
 
 ## Results
 
@@ -21,7 +21,7 @@ All 12 baseline tests pass on gpt-4o-mini through n8n Cloud (18 October 2026). A
 
 | Folder | Content |
 |---|---|
-| `submission/` | Scope of work, Q1 ideation, Q2 write-up, Q3 program charter, Q4 reflection, 12-test document |
+| `submission/` | SOW v1.0, Q1-Q4 v1.1, design/evaluation evidence, capstone summary deck, and 12-test document |
 | `screenshots/` | Workflow canvas and Langfuse traces |
 | `docs/` | Design document, evaluation and cost notes, architecture diagram |
 
@@ -76,3 +76,10 @@ The sample data has no "today". Mira uses a baseline of **24 April 2026** (end o
 ## Rebuilding the workflow
 
 Edit a file in `src/nodes/`, `src/lib.js` or `prompts/`, then run `node tools/build_workflow.js prod`. Re-import the JSON. Credentials must be selected again after an import.
+
+## Submission closeout
+
+The final package includes the current Q1-Q4 files, SOW v1.0, W-1 to W-7 diagrams, the live 12-test results, trace-linked evaluate-fix-retest evidence, and the accepted summary slide deck. The governing Mira Problem Statement (S1) was not included in the files used to assemble this repository; retain it in the course submission folder or confirm evaluator access through the course portal.
+
+
+The refreshed submission files are synced to the public repository. The governing Problem Statement (S1) is included in `submission/Problem Statement - Mira_ AI-Powered Project Intelligence Assistant.pdf`.
